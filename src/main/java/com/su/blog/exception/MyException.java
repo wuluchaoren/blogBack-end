@@ -38,13 +38,12 @@ public class MyException extends Exception {
     public int getStateCode() {
         return stateCode;
     }
+    public Object getObject() {
+        return object;
+    }
 
     public void setStateCode(int stateCode) {
         this.stateCode = stateCode;
-    }
-
-    public Object getObject() {
-        return object;
     }
 
     public void setObject(Object object) {
