@@ -1,11 +1,13 @@
 package com.su.blog.controller;
 
 import com.su.blog.entity.Blogger;
+import com.su.blog.exception.MyException;
 import com.su.blog.service.BloggerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -22,16 +24,49 @@ public class BloggerController {
     private BloggerService bloggerService;
 
     /**
-     * 修改博主个人信息
+     * 获得博主信息
      */
-    @PutMapping
+    @GetMapping("/information/{id}")
     @ResponseBody
-    public ResponseEntity<Boolean> alterProfile(@RequestBody Map<String,String> map) throws Exception{
-
-        //return ResponseEntity.ok(bloggerService.alterProfile());
-        return ResponseEntity.ok(true);
+    public ResponseEntity<Map<String,Object>>getInformation(@PathVariable("id") int id) throws MyException{
+        Blogger blogger=bloggerService.getBloggerById(id);
+        Map<String,Object> m=new HashMap<>();
+        m.put("name",blogger.getName());
+        m.put("sex",blogger.getSex());
+        m.put("password",blogger.getPassword());
+        m.put("age",blogger.getAge());
+        m.put("email",blogger.getEmail());
+        m.put("job",blogger.getJob());
+        m.put("github",blogger.getGithub());
+        m.put("interests",blogger.getInterests());
+        m.put("weibo",blogger.getWeibo());
+        m.put("motto",blogger.getMotto());
+        return ResponseEntity.ok(m);
     }
 
+    /**
+     * 修改博主个人信息
+     */
+    @PutMapping("/information")
+    @ResponseBody
+    public ResponseEntity<Boolean> alterProfile(@RequestBody Map<String,String> map) throws Exception{
+        Blogger blogger=new Blogger();
+        blogger.setId(Integer.parseInt(map.get("id")));
+        blogger.setAge(Integer.parseInt(map.get("age")));
+        blogger.setEmail(map.get("email"));
+        blogger.setGithub(map.get("github"));
+        blogger.setInterests(map.get("interests"));
+        blogger.setJob(map.get("job"));
+        blogger.setMotto(map.get("motto"));
+        blogger.setName(map.get("name"));
+        blogger.setSex(map.get("sex"));
+        blogger.setWeibo(map.get("weibo"));
+        return ResponseEntity.ok(bloggerService.alterProfile(blogger));
+    }
+
+    /**
+     * 修改博主密码
+     */
     @PutMapping("/password")
     @ResponseBody
     public ResponseEntity<Boolean> alterPassword(@RequestBody Map<String,String> map) throws  Exception{
