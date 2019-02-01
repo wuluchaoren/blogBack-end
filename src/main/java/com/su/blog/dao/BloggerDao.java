@@ -20,7 +20,10 @@ public class BloggerDao {
     private BloggerMapper bloggerMapper;
 
     /**
-     * 根据id获得博主信息
+     * Description:根据id寻找博主
+     *
+     * @author Tianyu Su
+     * @date 2019/01/24
      */
     public Blogger getBloggerById(int id) throws MyException{
         Blogger blogger=bloggerMapper.findBloggerById(id);
@@ -31,7 +34,10 @@ public class BloggerDao {
     }
 
     /**
-     * 根据id修改博主密码
+     * Description:根据id修改博主密码
+     *
+     * @author Tianyu Su
+     * @date 2019/01/24
      */
     public boolean alterPasswordById(Blogger blogger) throws MyException{
         try{
@@ -46,7 +52,10 @@ public class BloggerDao {
     }
 
     /**
-     * 根据id修改博主个人信息
+     * Description:根据id修改博主信息
+     *
+     * @author Tianyu Su
+     * @date 2019/01/24
      */
     public boolean alterProfileById(Blogger blogger) throws MyException{
         try{

@@ -24,7 +24,10 @@ public class BloggerController {
     private BloggerService bloggerService;
 
     /**
-     * 获得博主信息
+     * Description:获得博主信息
+     *
+     * @author Tianyu Su
+     * @date 2019/01/24
      */
     @GetMapping("/information/{id}")
     @ResponseBody
@@ -45,7 +48,10 @@ public class BloggerController {
     }
 
     /**
-     * 修改博主个人信息
+     * Description:修改博主个人信息
+     *
+     * @author Tianyu Su
+     * @date 2019/01/24
      */
     @PutMapping("/information")
     @ResponseBody
@@ -65,7 +71,10 @@ public class BloggerController {
     }
 
     /**
-     * 修改博主密码
+     * Description:修改博主密码
+     *
+     * @author Tianyu Su
+     * @date 2019/01/24
      */
     @PutMapping("/password")
     @ResponseBody
