@@ -3,6 +3,8 @@ package com.su.blog.mapper;
 import com.su.blog.entity.Article;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * Description:
  *
@@ -52,4 +54,12 @@ public interface ArticleMapper {
      * @return 修改成功返回true，失败返回false
      */
     boolean updateArticleById(Article article);
+
+    /**
+     * 根据标题或者关键字搜索文章
+     *
+     * @param info
+     * @return 返回符合要求的文章list
+     */
+    List<Article> findArticleByInfo(String info);
 }

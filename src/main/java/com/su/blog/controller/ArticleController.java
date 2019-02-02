@@ -3,10 +3,15 @@ package com.su.blog.controller;
 import com.su.blog.entity.Article;
 import com.su.blog.exception.MyException;
 import com.su.blog.service.ArticleService;
+import com.su.blog.service.KindService;
+import com.su.blog.utils.JsonUtils;
+import com.su.blog.vo.ArticleVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -21,13 +26,25 @@ public class ArticleController {
     @Autowired
     private ArticleService articleService;
 
+    @Autowired
+    private KindService kindService;
+
     /**
      * Description: 根据kindId获得该类别下的文章
      *
      * @author Tianyu Su
      * @date 2019/02/02
      */
-
+    @GetMapping("/findArticle/{kindId}")
+    @ResponseBody
+    public List<ArticleVO> findArticle(@PathVariable("kindId") int kindId) throws MyException {
+        List<ArticleVO> kindArticleVOS = new ArrayList<>();
+        List<Article> articles = kindService.findArticle(kindId);
+        for (Article article : articles) {
+            kindArticleVOS.add(new ArticleVO(article));
+        }
+        return kindArticleVOS;
+    }
 
     /**
      * Description: 给文章点赞
@@ -50,7 +67,18 @@ public class ArticleController {
     @PostMapping("/createArticle/")
     @ResponseBody
     public ResponseEntity<Boolean> createArticle(@RequestBody Map<String,String> map) throws MyException{
-
+        Article article=new Article();
+        article.setTitle(map.get("title"));
+        article.setKeyword(map.get("keyword"));
+        article.setKindId(Integer.parseInt(map.get("kind")));
+        article.setContent(map.get("content"));
+        article.setSupport(Integer.parseInt(map.get("support")));
+        article.setWriter(map.get("writer"));
+        article.setIntroduction(map.get("introduction"));
+        article.setSource(map.get("source"));
+        article.setPraiseNumber(0);
+        article.setPublicTime(JsonUtils.StringToTimestamp(map.get("publicTime")));
+        return ResponseEntity.ok(articleService.createArticle(article));
     }
 
     /**
@@ -84,5 +112,22 @@ public class ArticleController {
     @ResponseBody
     public ResponseEntity<Boolean> deleteArticle(@PathVariable("articleId") int articleId) throws MyException{
         return ResponseEntity.ok(articleService.deleteArticle(articleId));
+    }
+
+    /**
+     * Description: 根据关键字或者标题搜索文章
+     *
+     * @author Tianyu Su
+     * @date 2019/02/02
+     */
+    @GetMapping("/findArticle/{info}")
+    @ResponseBody
+    public List<ArticleVO> findArticle(@PathVariable("info") String info) throws MyException{
+        List<Article> list=articleService.findArticle(info);
+        List<ArticleVO> articleVOS=new ArrayList<>();
+        for(Article article:list) {
+            articleVOS.add(new ArticleVO(article));
+        }
+        return articleVOS;
     }
 }
