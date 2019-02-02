@@ -1,5 +1,6 @@
 package com.su.blog.mapper;
 
+import com.su.blog.entity.Article;
 import com.su.blog.entity.Kind;
 import org.springframework.stereotype.Repository;
 
@@ -49,4 +50,11 @@ public interface KindMapper {
      * @return 修改成功返回true，失败返回false
      */
     boolean updateKindById(Kind kind);
+
+    /**
+     * 查找属于该kind下的文章
+     * @param kindId
+     * @return 返回该类别下的所有文章
+     */
+    List<Article> findArticleById(int kindId);
 }

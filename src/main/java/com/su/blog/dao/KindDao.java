@@ -1,5 +1,6 @@
 package com.su.blog.dao;
 
+import com.su.blog.entity.Article;
 import com.su.blog.entity.Kind;
 import com.su.blog.exception.MyException;
 import com.su.blog.mapper.KindMapper;
@@ -79,5 +80,20 @@ public class KindDao {
             throw new MyException("新建kind错误，数据库修改出错！",MyException.ERROR);
         }
         return true;
+    }
+
+    /**
+     * Description:根据kindId获得该类别的文章
+     *
+     * @author Tianyu Su
+     * @date 2019/02/02
+     */
+    public List<Article> findArticleById(int kindId) throws MyException{
+        try{
+            kindMapper.findKindById(kindId);
+        }catch (Exception e){
+            throw new MyException("错误！未找到类别！",MyException.NOT_FOUND_ERROR);
+        }
+        return kindMapper.findArticleById(kindId);
     }
 }
