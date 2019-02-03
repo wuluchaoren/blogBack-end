@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.su.blog.mapper.BloggerMapper">
+    <resultMap id="tab_blogger" type="com.su.blog.entity.Blogger">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="sex" column="sex"/>
+        <result property="password" column="password"/>
+        <result property="age" column="age"/>
+        <result property="email" column="email"/>
+        <result property="job" column="job"/>
+        <result property="github" column="github"/>
+        <result property="weibo" column="weibo"/>
+        <result property="interests" column="interests"/>
+        <result property="motto" column="motto"/>
+    </resultMap>
+
+
+    <select id="findBloggerById" parameterType="int" resultMap="tab_blogger" resultType="com.su.blog.entity.Blogger">
+        SELECT id,name,sex,password,age,email,job,github,weibo,interests,motto
+        FROM blogger
+        WHERE id=#{id}
+    </select>
+
+    <update id="updateBloggerPasswordById" parameterType="com.su.blog.entity.Blogger">
+        UPDATE blogger
+        SET password=#{password}
+        WHERE id=#{id}
+    </update>
+
+    <update id="updateBloggerProfileById" parameterType="com.su.blog.entity.Blogger">
+        UPDATE blogger
+        SET password=#{password},
+            age=#{age},
+            email=#{email},
+            github=#{github},
+            interests=#{interests},
+            job=#{job},
+            motto=#{motto},
+            name=#{name},
+            sex=#{sex},
+            weibo=#{weibo}
+        WHERE id=#{id}
+    </update>
+</mapper>

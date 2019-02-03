@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.su.blog.mapper.KindMapper">
+    <resultMap id="tab_kind" type="com.su.blog.entity.Kind">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="number" column="number"/>
+    </resultMap>
+
+    <resultMap id="tab_article" type="com.su.blog.entity.Article">
+        <result property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="kindId" column="kindId"/>
+        <result property="introduction" column="introduction"/>
+        <result property="keyword" column="keyword"/>
+        <result property="writer" column="writer"/>
+        <result property="content" column="content"/>
+        <result property="support" column="support"/>
+        <result property="praiseNumber" column="praiseNumber"/>
+        <result property="publicTime" column="publicTime"/>
+        <result property="source" column="source"/>
+    </resultMap>
+
+    <select id="listAll" resultMap="tab_kind" resultType="com.su.blog.entity.Kind">
+        SELECT * FROM kind
+    </select>
+
+    <select id="findKindById" resultMap="tab_kind" resultType="com.su.blog.entity.Kind">
+        SELECT *
+        FROM kind
+        WHERE id=#{id}
+    </select>
+
+    <insert id="insertKind" parameterType="com.su.blog.entity.Kind">
+        INSERT INTO kind(id,name,number)
+        VALUE(#{id},#{name},#{number})
+    </insert>
+
+    <delete id="deleteKindById" parameterType="int">
+        DELETE
+        FROM kind
+        WHERE id=#{id}
+    </delete>
+
+    <update id="updateKindById" parameterType="com.su.blog.entity.Kind">
+        UPDATE kind
+        SET name=#{name},
+            number=#{number}
+        WHERE id=#{id}
+    </update>
+
+    <select id="findArticleById" parameterType="int" resultMap="tab_article" resultType="com.su.blog.entity.Article">
+        SELECT *
+        FROM article
+        WHERE id=#{id}
+    </select>
+</mapper>

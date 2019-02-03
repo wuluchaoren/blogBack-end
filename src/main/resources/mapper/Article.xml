@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.su.blog.mapper.ArticleMapper">
+    <resultMap id="tab_article" type="com.su.blog.entity.Article">
+        <result property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="kindId" column="kindId"/>
+        <result property="introduction" column="introduction"/>
+        <result property="keyword" column="keyword"/>
+        <result property="writer" column="writer"/>
+        <result property="content" column="content"/>
+        <result property="support" column="support"/>
+        <result property="praiseNumber" column="praiseNumber"/>
+        <result property="publicTime" column="publicTime"/>
+        <result property="source" column="source"/>
+    </resultMap>
+</mapper>
