@@ -38,7 +38,7 @@ public class ArticleService {
      * Description: 发布文章
      *
      * @author Tianyu Su
-     * @date 2019/02/02
+     * @date 2019/02/04
      */
     public boolean createArticle(Article article) throws MyException{
         if(!articleDao.createArticle(article)){
