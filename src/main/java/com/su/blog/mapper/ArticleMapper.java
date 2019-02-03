@@ -18,10 +18,10 @@ public interface ArticleMapper {
     /**
      * 根据id更新文章点赞数
      *
-     * @param id
+     * @param article
      * @return 更新成功返回true，失败返回false
      */
-    boolean updateArticlePraiseNumberById(int id);
+    boolean updateArticlePraiseNumberById(Article article);
 
     /**
      * 根据id查找文章

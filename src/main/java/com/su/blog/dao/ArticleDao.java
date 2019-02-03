@@ -41,12 +41,15 @@ public class ArticleDao {
      * @date 2016/02/02
      */
     public boolean updatePraiseNumberById(int articleId) throws MyException{
+        Article article;
         try{
-            articleMapper.findArticleById(articleId);
+            article=articleMapper.findArticleById(articleId);
         }catch (Exception e){
             throw new MyException("错误！未找到该文章！",MyException.NOT_FOUND_ERROR);
         }
-        if(!articleMapper.updateArticlePraiseNumberById(articleId)){
+        int num=article.getPraiseNumber();
+        article.setPraiseNumber(num+1);
+        if(!articleMapper.updateArticlePraiseNumberById(article)){
             throw new MyException("修改数据库错误，数据库处理错误！",MyException.ERROR);
         }
         return true;
