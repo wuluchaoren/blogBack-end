@@ -14,4 +14,45 @@
         <result property="publicTime" column="publicTime"/>
         <result property="source" column="source"/>
     </resultMap>
+
+    <update id="updateArticlePraiseNumberById" parameterType="com.su.blog.entity.Article">
+        UPDATE article
+        SET praiseNumber=#{praiseNumber}
+        WHERE id=#{id}
+    </update>
+
+    <select id="findArticleById" parameterType="int" resultMap="tab_article" resultType="com.su.blog.entity.Article">
+        SELECT *
+        FROM article
+        WHERE id=#{id}
+    </select>
+
+    <delete id="deleteArticleById" parameterType="int">
+        DELETE
+        FROM article
+        WHERE id=#{id}
+    </delete>
+
+    <insert id="insertArticle" parameterType="com.su.blog.entity.Article">
+        INSERT INTO article(id,title,kindId,introduction,keyword,writer,content,support,praiseNumber,publicTime,source)
+        VALUE (#{id},#{title},#{kindId},#{introduction},#{keyword},#{writer},#{content},#{support},#{praiseNumber},#{publicTime},#{source})
+    </insert>
+
+    <update id="updateArticleById" parameterType="com.su.blog.entity.Article">
+        UPDATE article
+        SET title=#{title}
+            writer=#{writer}
+            source=#{source}
+            keyword=#{keyword}
+            introduction=#{introduction}
+            support=#{support}
+            content=#{content}
+        WHERE id=#{id}
+    </update>
+
+    <select id="findArticleByInfo" parameterType="String" resultType="com.su.blog.entity.Article" resultMap="tab_article">
+        SELECT *
+        FROM article
+        WHERE title LIKE concat('%',#{info},'%') OR keyword LIKE concat('%',#{info},'%')
+    </select>
 </mapper>
