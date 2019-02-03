@@ -1,6 +1,7 @@
 package com.su.blog.service;
 
 import com.su.blog.dao.ArticleDao;
+import com.su.blog.dao.KindDao;
 import com.su.blog.entity.Article;
 import com.su.blog.exception.MyException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,9 @@ public class ArticleService {
     @Autowired
     private ArticleDao articleDao;
 
+    @Autowired
+    private KindDao kindDao;
+
     /**
      * Description:根据id给文章点赞
      *
@@ -38,6 +42,9 @@ public class ArticleService {
      */
     public boolean createArticle(Article article) throws MyException{
         if(!articleDao.createArticle(article)){
+            throw new MyException("新增文章出错!数据库插入错误!",MyException.ERROR);
+        }
+        if(!kindDao.alterNumberById(article.getKindId())){
             throw new MyException("新增文章出错!数据库插入错误!",MyException.ERROR);
         }
         return true;

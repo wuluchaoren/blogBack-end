@@ -70,7 +70,7 @@ public class ArticleController {
         Article article=new Article();
         article.setTitle(map.get("title"));
         article.setKeyword(map.get("keyword"));
-        article.setKindId(Integer.parseInt(map.get("kind")));
+        article.setKindId(Integer.parseInt(map.get("kindId")));
         article.setContent(map.get("content"));
         article.setSupport(Integer.parseInt(map.get("support")));
         article.setWriter(map.get("writer"));
