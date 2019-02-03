@@ -96,4 +96,14 @@ public class KindDao {
         }
         return kindMapper.findArticleById(kindId);
     }
+
+    /**
+     * Description:新增文章时修改所属kind的文章数
+     *
+     * @author Tianyu Su
+     * @date 2019/02/04
+     */
+    public boolean alterNumberById(int kindId) throws MyException{
+        return kindMapper.alterNumberById(kindId);
+    }
 }

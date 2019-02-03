@@ -57,4 +57,11 @@ public interface KindMapper {
      * @return 返回该类别下的所有文章
      */
     List<Article> findArticleById(int kindId);
+
+    /**
+     * 新增文章时修改所属kind的文章数
+     * @param kindId
+     * @return 修改成功返回true，否则返回false
+     */
+    boolean alterNumberById(int kindId);
 }
