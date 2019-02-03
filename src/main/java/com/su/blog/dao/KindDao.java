@@ -104,6 +104,13 @@ public class KindDao {
      * @date 2019/02/04
      */
     public boolean alterNumberById(int kindId) throws MyException{
-        return kindMapper.alterNumberById(kindId);
+        Kind kind=kindMapper.findKindById(kindId);
+        if(kind==null){
+            throw new MyException("错误！未找到类别！",MyException.NOT_FOUND_ERROR);
+        }else{
+            int number=kind.getNumber();
+            kind.setNumber(number+1);
+            return kindMapper.alterNumberById(kind);
+        }
     }
 }

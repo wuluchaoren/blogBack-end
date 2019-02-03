@@ -60,8 +60,8 @@ public interface KindMapper {
 
     /**
      * 新增文章时修改所属kind的文章数
-     * @param kindId
+     * @param kind
      * @return 修改成功返回true，否则返回false
      */
-    boolean alterNumberById(int kindId);
+    boolean alterNumberById(Kind kind);
 }
