@@ -54,4 +54,10 @@
         FROM article
         WHERE id=#{id}
     </select>
+
+    <update id="alterNumberById" parameterType="com.su.blog.entity.Kind">
+        UPDATE kind
+        SET number=#{number}
+        WHERE id=#{id}
+    </update>
 </mapper>
