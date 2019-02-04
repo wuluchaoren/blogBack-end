@@ -3,7 +3,7 @@ package com.su.blog.vo;
 import com.su.blog.entity.Kind;
 
 /**
- * Description:
+ * Description: KindVO，用于获得类别list
  *
  * @author Tianyu Su
  * @date 2019/2/1

@@ -5,7 +5,7 @@ import com.su.blog.entity.Article;
 import java.sql.Timestamp;
 
 /**
- * Description:
+ * Description: ArticleVO，用于获得文章list
  *
  * @author Tianyu Su
  * @date 2019/02/02
