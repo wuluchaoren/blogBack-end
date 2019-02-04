@@ -30,7 +30,7 @@ public class ArticleController {
     private KindService kindService;
 
     /**
-     * Description: 根据kindId获得该类别下的文章
+     * Description: 根据kindId获得该类别下的文章list
      *
      * @author Tianyu Su
      * @date 2019/02/02
