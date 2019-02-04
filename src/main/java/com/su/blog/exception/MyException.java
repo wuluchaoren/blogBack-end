@@ -13,14 +13,14 @@ public class MyException extends Exception {
      */
     public static final Integer ERROR = 400;
 
-    /**
-     * id格式错误
-     */
-    public static final Integer ID_FORMAT_ERROR = 401;
-    /**
-     * 需要权限错误
-     */
-    public static final Integer AUTHORIZATION_ERROR = 403;
+//    /**
+//     * id格式错误
+//     */
+//    public static final Integer ID_FORMAT_ERROR = 401;
+//    /**
+//     * 需要权限错误
+//     */
+//    public static final Integer AUTHORIZATION_ERROR = 403;
     /**
      * 资源没找到错误
      */
