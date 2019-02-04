@@ -28,14 +28,14 @@ public class JsonUtils {
         }
     }
 
-    /**
-     * Description: Timestamp格式转String
-     *
-     * @Author: Tianyu Su
-     * @Time: 2019/1/30
-     */
-    public static String TimestampToString(Timestamp ts) {
-        DateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-        return sdf.format(ts);
-    }
+//    /**
+//     * Description: Timestamp格式转String
+//     *
+//     * @Author: Tianyu Su
+//     * @Time: 2019/1/30
+//     */
+//    public static String TimestampToString(Timestamp ts) {
+//        DateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+//        return sdf.format(ts);
+//    }
 }
