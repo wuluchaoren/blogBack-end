@@ -35,7 +35,7 @@ public class ArticleController {
      * @author Tianyu Su
      * @date 2019/02/02
      */
-    @GetMapping("/findArticle/{kindId}")
+    @GetMapping("/selectArticle/{kindId}")
     @ResponseBody
     public List<ArticleVO> findArticle(@PathVariable("kindId") int kindId) throws MyException {
         List<ArticleVO> kindArticleVOS = new ArrayList<>();
