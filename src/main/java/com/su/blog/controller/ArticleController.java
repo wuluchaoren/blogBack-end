@@ -77,7 +77,7 @@ public class ArticleController {
         article.setIntroduction(map.get("introduction"));
         article.setSource(map.get("source"));
         article.setPraiseNumber(0);
-        article.setPublicTime(JsonUtils.StringToTimestamp(map.get("publicTime")));
+        article.setPublicTime(JsonUtils.stringToTimestamp(map.get("publicTime")));
         return ResponseEntity.ok(articleService.createArticle(article));
     }
 
