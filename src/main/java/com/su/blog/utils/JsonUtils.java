@@ -3,8 +3,7 @@ package com.su.blog.utils;
 import com.su.blog.exception.MyException;
 
 import java.sql.Timestamp;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+
 
 /**
  * Description:
@@ -20,7 +19,7 @@ public class JsonUtils {
      * @Author: Tianyu Su
      * @Time: 2019/1/30
      */
-    public static Timestamp StringToTimestamp(String s) throws MyException {
+    public static Timestamp stringToTimestamp(String s) throws MyException {
         try {
             return Timestamp.valueOf(s);
         }catch (Exception e){
